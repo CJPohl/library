@@ -1,0 +1,9 @@
+Features:
+- list of books user have read
+- individual pop ups for each book
+- shows title, author, total pages, and read status and maybe more TBD
+- New book button
+- remove book button
+- onload reload all dom elements from current book array
+
+
