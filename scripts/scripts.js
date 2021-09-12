@@ -1,3 +1,8 @@
+let books = [];
+
+const container = document.querySelector('.container');
+
+
 function Book(title, author, pages, read) {
     this.title = title
     this.author = author
@@ -7,5 +12,23 @@ function Book(title, author, pages, read) {
         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`
     }
 }
+
+function makeChart(array) {
+    for (let i=0; i<array.length; i++) {
+        const chart = document.createElement('div');
+        chart.classList.add('chart');
+        container.appendChild(chart);
+    }
+}
+
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkein', '295', 'is read');
-console.log(theHobbit.info());
+
+books.push(theHobbit);
+console.log(books);
+
+
+
+
+window.onload = function() {
+    makeChart(books);
+};
