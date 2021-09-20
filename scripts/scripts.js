@@ -4,11 +4,13 @@ let myLibrary = []; // main object array
 const container = document.querySelector('.container');
 const content = document.querySelector('.content');
 
-function Book(title, author, pages, read) { // object constructor
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
+class Book { // object constructor
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 }
 
 function makeChart() { // function to show array object content
