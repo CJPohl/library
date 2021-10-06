@@ -89,21 +89,25 @@ function addBookToLibrary() { // function to create forms for user input for new
     titleInput.setAttribute('type', 'text');
     titleInput.setAttribute('id', 'title');
     titleInput.setAttribute('placeholder', 'Title');
+    titleInput.required = true;
 
     const authorInput = document.createElement('input');
     authorInput.setAttribute('type', 'text');
     authorInput.setAttribute('id', 'author');
     authorInput.setAttribute('placeholder', 'Author');
+    authorInput.required = true;
 
     const pagesInput = document.createElement('input');
     pagesInput.setAttribute('type', 'text');
     pagesInput.setAttribute('id', 'pages');
     pagesInput.setAttribute('placeholder', 'Pages');
+    pagesInput.required = true;
 
     const readInput = document.createElement('input');
     readInput.setAttribute('type', 'text');
     readInput.setAttribute('id', 'read');
     readInput.setAttribute('placeholder', 'Read/Not Read');
+    readInput.required = true;
 
     const submitBtn = document.createElement('button')
     submitBtn.classList.add('submitBtn');
@@ -117,11 +121,29 @@ function addBookToLibrary() { // function to create forms for user input for new
     formContainer.appendChild(submitBtn);
     content.appendChild(formContainer);
     
-    submitBtn.addEventListener('click', newBook);
+    
+
+    submitBtn.addEventListener('click', () => {
+        if ((!titleInput.checkValidity()) || (!authorInput.checkValidity()) || (!pagesInput.checkValidity()) || (!readInput.checkValidity())) {
+           if (document.querySelector('.warning')) {
+            document.querySelector('.warning').remove();
+            }
+
+            const warning = document.createElement('div');
+            warning.innerHTML = '<h4 class="warning">*All Fields Required*</h4>';
+            content.appendChild(warning); 
+        }
+        else {
+            newBook();
+
+            if (document.querySelector('.warning')) {
+                document.querySelector('.warning').remove();
+            }
+        }
+    });
 }
 
 function newBook() { // when submit button is clicked, add new book object to array
-    
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;

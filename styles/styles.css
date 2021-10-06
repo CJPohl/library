@@ -140,6 +140,11 @@ p {
     margin-top: 15px;
 }
 
+.warning {
+    text-align: center;
+    color: red;
+}
+
 .total {
     margin: 0 auto;
     margin-top: 25px;
